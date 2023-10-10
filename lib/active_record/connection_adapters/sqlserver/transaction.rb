@@ -8,7 +8,7 @@ module ActiveRecord
       private
 
       def sqlserver?
-        connection.respond_to?(:sqlserver?) && connection.sqlserver?
+        connection&.sqlserver?
       end
 
       def current_isolation_level

@@ -9,7 +9,7 @@ module ActiveRecord
       module CoreExt
         module Calculations
           def calculate(operation, column_name)
-            if klass.connection.sqlserver?
+            if klass.connection&.sqlserver?
               _calculate(operation, column_name)
             else
               super

@@ -8,7 +8,7 @@ module ActiveRecord
       module CoreExt
         module LoaderQuery
           def load_records_for_keys(keys, &block)
-            return super unless scope.connection.sqlserver?
+            return super unless scope.connection&.sqlserver?
 
             if association_key_name.is_a?(Array)
               query_constraints = Hash.new { |hsh, key| hsh[key] = Set.new }
