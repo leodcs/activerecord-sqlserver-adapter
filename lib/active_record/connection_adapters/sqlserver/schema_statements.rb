@@ -583,7 +583,8 @@ module ActiveRecord
         end
 
         def views_real_column_name(table_name, column_name)
-          view_definition = view_information(table_name)[:VIEW_DEFINITION]
+          information = view_information(table_name)
+          view_definition = information[:VIEW_DEFINITION] if information
           return column_name unless view_definition
 
           match_data = view_definition.match(/([\w-]*)\s+as\s+#{column_name}/im)
